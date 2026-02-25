@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Z-index layering system */
+/* Leaflet map controls: 400-500 */
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  z-index: 400 !important;
+}
+
+/* Leaflet markers: 600 */
+.leaflet-marker-pane {
+  z-index: 600 !important;
+}
+
+/* Leaflet popups: 700 */
+.leaflet-popup-pane {
+  z-index: 700 !important;
+}
+
+/* Sticky navbar: 1000 */
+/* Already set in Navbar component */
+
+/* Chakra UI Menu dropdowns: 1400 (Chakra default) */
+/* Chakra UI Modal overlay: 1400 (Chakra default) */
+/* Chakra UI Modal content: 1400 (Chakra default) */
+/* Chakra UI Toast: 1500 (Chakra default) */
+
+/* Ensure Leaflet map doesn't overflow its container */
+.leaflet-container {
+  z-index: 1;
+}
+
+/* Custom colored marker pins */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-marker div {
+  position: relative;
+}
