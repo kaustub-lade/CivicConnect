@@ -1,0 +1,28 @@
+# Render Configuration for CivicConnect Backend
+services:
+  - type: web
+    name: civicconnect-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false # Set this in Render dashboard (use your MongoDB Atlas connection string)
+      - key: JWT_SECRET
+        generateValue: true # Render will generate a secure random string
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false # Set in Render dashboard if using Cloudinary
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
