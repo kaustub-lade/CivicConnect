@@ -151,7 +151,8 @@ export default function Dashboard() {
         setLoading(true);
         setError(null);
         const data = await complaintAPI.getAll();
-        setComplaints(data);
+        // Ensure data is an array
+        setComplaints(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error('Failed to fetch complaints:', err);
         setError('Failed to load complaints. Using demo data.');
@@ -175,7 +176,7 @@ export default function Dashboard() {
     setSelectedComplaint(null);
   };
 
-  const filteredComplaints = complaints.filter(complaint => {
+  const filteredComplaints = (complaints || []).filter(complaint => {
     const matchesSearch = complaint.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          complaint.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = filterCategory === 'all' || complaint.category === filterCategory;
