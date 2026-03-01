@@ -149,8 +149,10 @@ export default function CommunityMap() {
         setLoading(true);
         setError(null);
         const data = await complaintAPI.getAll();
-        setAllComplaints(data);
-        setComplaints(data);
+        // Ensure data is an array
+        const complaintsArray = Array.isArray(data) ? data : [];
+        setAllComplaints(complaintsArray);
+        setComplaints(complaintsArray);
       } catch (err) {
         console.error('Failed to fetch complaints:', err);
         setError('Failed to load complaints. Using demo data.');
@@ -170,7 +172,7 @@ export default function CommunityMap() {
     if (filterCategory === 'all') {
       setComplaints(allComplaints);
     } else {
-      setComplaints(allComplaints.filter(c => c.category === filterCategory));
+      setComplaints((allComplaints || []).filter(c => c.category === filterCategory));
     }
   }, [filterCategory, allComplaints]);
 
@@ -259,7 +261,7 @@ export default function CommunityMap() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               />
               
-              {complaints.map((complaint) => (
+              {(complaints || []).map((complaint) => (
                 <Marker
                   key={complaint.complaintId}
                   position={[complaint.location.lat, complaint.location.lng]}

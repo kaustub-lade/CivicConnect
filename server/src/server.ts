@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import { createServer } from 'http';
+import { initializeSocket } from './socket';
 
 // Load environment variables
 dotenv.config();
@@ -18,6 +20,12 @@ import uploadRoutes from './routes/upload.routes';
 
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
+
+// Create HTTP server for Socket.io
+const httpServer = createServer(app);
+
+// Initialize Socket.io
+initializeSocket(httpServer);
 
 // Middleware
 app.use(helmet()); // Security headers
@@ -75,9 +83,10 @@ const connectDB = async () => {
 const startServer = async () => {
   await connectDB();
   
-  app.listen(PORT, () => {
+  httpServer.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
     console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`🔌 Socket.io initialized`);
   });
 };
 

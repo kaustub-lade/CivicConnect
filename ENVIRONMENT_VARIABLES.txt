@@ -1,0 +1,69 @@
+=====================================================
+   NETLIFY ENVIRONMENT VARIABLES
+=====================================================
+
+Go to: https://app.netlify.com/
+→ Select: shimmering-cranachan-df61bb
+→ Site configuration → Environment variables
+→ Click: Add a variable
+
+ADD THESE TWO VARIABLES:
+
+Variable 1:
+-----------
+Key:   VITE_API_URL
+Value: https://civicconnect-api.onrender.com/api
+
+Variable 2:
+-----------
+Key:   VITE_SOCKET_URL
+Value: https://civicconnect-api.onrender.com
+
+Then: Save → Deploys → Trigger deploy → Deploy site
+
+=====================================================
+   RENDER ENVIRONMENT VARIABLES
+=====================================================
+
+Go to: https://dashboard.render.com/
+→ Select: civicconnect-api
+→ Environment tab
+→ Click: Add Environment Variable
+
+ADD THIS VARIABLE:
+
+Key:   CLIENT_URL
+Value: https://shimmering-cranachan-df61bb.netlify.app
+
+(Note: No trailing slash!)
+
+Then: Save Changes (auto-redeploys)
+
+=====================================================
+   TEST AFTER DEPLOYMENT
+=====================================================
+
+1. Open: https://shimmering-cranachan-df61bb.netlify.app/
+
+2. Click: Login
+
+3. Use:
+   Email: citizen@test.com
+   Password: Pass123!
+
+4. Should login successfully ✅
+
+=====================================================
+   QUICK LINKS
+=====================================================
+
+Frontend:  https://shimmering-cranachan-df61bb.netlify.app/
+Backend:   https://civicconnect-api.onrender.com
+Health:    https://civicconnect-api.onrender.com/api/health
+
+Netlify:   https://app.netlify.com/
+Render:    https://dashboard.render.com/
+MongoDB:   https://cloud.mongodb.com/
+GitHub:    https://github.com/kaustub-lade/CivicConnect
+
+=====================================================
