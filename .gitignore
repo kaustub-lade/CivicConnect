@@ -15,7 +15,7 @@ dist-ssr
 # Environment variables
 .env
 .env.local
-.env.production
+# .env.production - Allowed (contains only public URLs)
 RENDER_ENV_SETUP.txt
 
 # Editor directories and files
