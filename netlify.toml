@@ -22,6 +22,7 @@
 [build.environment]
   NODE_VERSION = "18"
   NODE_ENV = "production"
+  NPM_CONFIG_PRODUCTION = "false"
 
 # Headers for security and performance
 [[headers]]
