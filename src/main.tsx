@@ -6,7 +6,7 @@ import theme from './theme';
 import './index.css';
 import { registerServiceWorker, requestNotificationPermission } from './utils/pwa';
 
-// Register service worker for PWA
+// Register service worker for PWA functionality
 registerServiceWorker();
 
 // Request notification permission
