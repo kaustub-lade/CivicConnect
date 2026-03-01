@@ -23,8 +23,6 @@
   NODE_VERSION = "18"
   NODE_ENV = "production"
   NPM_CONFIG_PRODUCTION = "false"
-  VITE_API_URL = "https://civicconnect-api.onrender.com/api"
-  VITE_SOCKET_URL = "https://civicconnect-api.onrender.com"
 
 # Headers for security and performance
 [[headers]]
