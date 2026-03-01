@@ -1,7 +1,7 @@
 // API Service for CivicConnect
 
-// Use environment variable for API URL, fallback to localhost for development
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Production API URL - hardcoded to bypass environment variable issues
+const API_URL = 'https://civicconnect-api.onrender.com/api';
 
 // Helper function to get auth headers
 const getAuthHeaders = () => {

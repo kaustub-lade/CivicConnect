@@ -37,7 +37,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const toast = useToast();
 
-  const API_URL = 'http://localhost:5000/api';
+  // Production API URL - hardcoded to bypass environment variable issues
+  const API_URL = 'https://civicconnect-api.onrender.com/api';
 
   // Load user from localStorage on mount
   useEffect(() => {
