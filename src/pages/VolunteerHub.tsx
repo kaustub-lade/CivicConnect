@@ -68,7 +68,8 @@ export default function VolunteerHub() {
         setLoading(true);
         setError(null);
         const data = await volunteerAPI.getOpportunities();
-        setOpportunities(data);
+        const opportunitiesArray = Array.isArray(data) ? data : [];
+        setOpportunities(opportunitiesArray);
       } catch (err) {
         console.error('Failed to fetch opportunities:', err);
         setError('Failed to load opportunities. Using demo data.');
@@ -152,7 +153,7 @@ export default function VolunteerHub() {
           <Box>
             <Heading size="md" mb={4}>Available Opportunities</Heading>
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-              {opportunities.map(issue => (
+              {(opportunities || []).map(issue => (
                 <Card
                   key={issue.id}
                   variant="outline"
