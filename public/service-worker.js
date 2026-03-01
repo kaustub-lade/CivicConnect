@@ -1,4 +1,4 @@
-const CACHE_NAME = 'civicconnect-v1';
+const CACHE_NAME = 'civicconnect-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -32,6 +32,15 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
+  // Don't cache API requests or Socket.io connections
+  if (event.request.url.includes('/api/') || 
+      event.request.url.includes('socket.io') ||
+      event.request.url.includes('localhost:5000') ||
+      event.request.method !== 'GET') {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       // Cache hit - return response
